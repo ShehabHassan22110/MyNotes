@@ -1,0 +1,27 @@
+
+<section id="signIn">
+    <div class="container">
+     <form  [formGroup]='signIn'  (ngSubmit)="signIn.valid && submitSignIn()"  class="w-50 m-outo">
+   
+           <input type="email"  formControlName="email" placeholder="Enter Emali" class="form-control mb-3">
+           <div class="alert alert-danger" *ngIf="signIn.controls.email.errors && signIn.controls.email.touched">
+            <p  *ngIf="signIn.controls.email.errors.required">Email is required</p>
+            <p *ngIf="signIn.controls.email.errors.email">Invalid Email </p>
+         
+          </div>
+     
+           <input type="password" formControlName="password"placeholder="Enter Password" class="form-control mb-3 ">
+           <div class="alert alert-danger" *ngIf="signIn.controls.password.errors && signIn.controls.password.touched">
+            <p *ngIf="signIn.controls.password.errors.required">Password is required</p>
+            <p *ngIf="signIn.controls.password.errors.pattern">Password must be between 3 and 10 </p>
+             </div>
+           <button [disabled]="signIn.invalid" class="w-100 btn btn-secondary">Sign In</button>
+           <div *ngIf='error' class="alert alert-danger mt-2">
+            {{error}}
+         </div>
+  
+     </form>
+    </div>
+
+
+</section>

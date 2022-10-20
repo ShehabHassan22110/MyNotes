@@ -1,0 +1,49 @@
+<section   id="singUp">
+    <div class="container">
+     <form  [formGroup]='signUp'  (ngSubmit)="signUp.valid && submitSignUp()"  class="w-50 m-outo">
+        <div class="form">
+           <div class="row">
+            <div class="col-md-6">
+               <input type="text" formControlName="first_name" placeholder="Enter  First Name" class="form-control mb-3">
+               <div class="alert alert-danger" *ngIf="signUp.controls.first_name.errors && signUp.controls.first_name.touched">
+                  <p  *ngIf="signUp.controls.first_name.errors.required">First Name is required</p>
+                  <p *ngIf="signUp.controls.first_name.errors.minlength">First Name Minimum Length is 3</p>
+                  <p *ngIf="signUp.controls.first_name.errors.maxlength">First Name Minimum Length is 10</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+               <input type="text"   formControlName="last_name" placeholder="Enter  Last Name" class="form-control mb-3">
+               <div class="alert alert-danger" *ngIf="signUp.controls.last_name.errors && signUp.controls.last_name.touched">
+                  <p  *ngIf="signUp.controls.last_name.errors.required">Last Name is required</p>
+                  <p *ngIf="signUp.controls.last_name.errors.minlength">Last Name Minimum Length is 3</p>
+                  <p *ngIf="signUp.controls.last_name.errors.maxlength">Last Name Minimum Length is 10</p>
+              </div>
+            </div>
+        </div>
+           <input type="email"  formControlName="email" placeholder="Enter Emali" class="form-control mb-3">
+           <div class="alert alert-danger" *ngIf="signUp.controls.email.errors && signUp.controls.email.touched">
+            <p  *ngIf="signUp.controls.email.errors.required">Email is required</p>
+            <p *ngIf="signUp.controls.email.errors.email">Invalid Email </p>
+         
+        </div>
+           <input type="number"  formControlName="age" placeholder="Enter Age" class="form-control mb-3">
+           <div class="alert alert-danger" *ngIf="signUp.controls.age.errors && signUp.controls.age.touched">
+            <p *ngIf="signUp.controls.age.errors.required">Age is required</p>
+            <p *ngIf="signUp.controls.age.errors.min">Age Minimum is 10</p>
+            <p *ngIf="signUp.controls.age.errors.max">Age Minimum is 80</p>
+        </div>
+           <input type="password" formControlName="password"placeholder="Enter Password" class="form-control mb-3 ">
+           <div class="alert alert-danger" *ngIf="signUp.controls.password.errors && signUp.controls.password.touched">
+            <p *ngIf="signUp.controls.password.errors.required">Password is required</p>
+            <p *ngIf="signUp.controls.password.errors.pattern">Password must be between 3 and 10 </p>
+        </div>
+           <button [disabled]="signUp.invalid" class="w-100 btn btn-secondary"><span *ngIf='!isClicked'>Sign Up</span>  <span *ngIf='isClicked'>Waiting ...</span>  </button>
+        </div>
+            <div *ngIf='error' class="alert alert-danger mt-2">
+               {{error}}
+            </div>
+      </form>
+    </div>
+
+
+</section>
